@@ -674,6 +674,8 @@ def test_apply(table):
                        np.array([1, 4, 4, 100]))
     assert_array_equal(t.apply(lambda row: row.item('count') * 2),
                        np.array([18, 6, 6, 2]))
+    assert_array_equal(t.apply(lambda row: row.item(1) * 2),
+                       np.array([18, 6, 6, 2]))
     with(pytest.raises(ValueError)):
         t.apply(lambda x, y: x + y, 'count', 'score')
     with(pytest.warns(FutureWarning)):
